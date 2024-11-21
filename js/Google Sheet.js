@@ -1,11 +1,15 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbydO2u-cD-ROjh4DO9y3yETc_OyxCKTxV9NDftBRux-rGsr_5rsYRUwlJjo2mkRD5e9hg/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbx4t_7ItV0q0QVYnoA0xcNV7jddetjVP4sHpjOhdGo2pYdbUPepE2vgDaRuGIdjkylx/exec'
 
 const form = document.forms['contact-form']
 
 form.addEventListener('submit', e => {
   e.preventDefault()
   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  .then(response => alert("Thank you! your form is submitted successfully." ))
-  .then(() => { window.location.reload(); })
-  .catch(error => console.error('Error!', error.message))
+    .then(response => {
+      // alert("Thank you! Your form has been submitted successfully.")
+      setTimeout(() => {
+        window.location.href = 'thank.html' // Redirect after 3 seconds
+      }, 1000); // 3000 milliseconds = 3 seconds
+    })
+    .catch(error => console.error('Error!', error.message))
 })
